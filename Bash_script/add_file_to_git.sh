@@ -1,7 +1,6 @@
 #!/bin/bash
-file=$#
 i=1
-until test $i -le $file
+for i in $*;
 do
-	git add $i
+	sudo git add $i
 done
