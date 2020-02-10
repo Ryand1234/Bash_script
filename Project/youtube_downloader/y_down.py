@@ -5,6 +5,7 @@ import webbrowser
 from flask import Flask , request,render_template
 from subprocess import call,Popen,check_call
 from selenium import webdriver
+from os import fork
 app = Flask(__name__)
 
 @app.route('/')
@@ -22,10 +23,14 @@ def input():
 		elif hasattr(e,'code'):
 			return render_template("error1.html",error=e.code)
 	else:
+		f = fork()
 		webbrowser.open(url)
 		'''render_template('download_video.html',url=url)'''
-		call(["bash download.sh "+url ],shell=True)
-		return render_template('download_video.html',url=url)
+		if f == 0:
+			return render_template('downloading_video.html')
+		else:
+			call(["bash download.sh "+url ],shell=True)
+			return render_template('download_video.html');
 		
 	
 if __name__=="__main__":
