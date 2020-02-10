@@ -24,8 +24,6 @@ def input():
 			return render_template("error1.html",error=e.code)
 	else:
 		f = fork()
-		webbrowser.open(url)
-		'''render_template('download_video.html',url=url)'''
 		if f == 0:
 			return render_template('downloading_video.html')
 		else:
