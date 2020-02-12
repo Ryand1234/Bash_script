@@ -16,8 +16,4 @@ query = "INSERT INTO form (Name,Number,Email,Address,Password) values (%s,%s,%s,
 arg = (name,mobile,email,contry,password)
 cur.execute(query,arg)
 db.commit()
-'''for row in cur.fetchall():
-    for i in range(0,4):
-    	print (str(row[i])+ " ")
-'''
 db.close()
