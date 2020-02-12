@@ -9,7 +9,7 @@ import MySQLdb
 
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
-                     passwd="Emma@watson14",  # your password
+                     passwd="riyan1234",  # your password
                      db="data")        # name of the data base
 
 # you must create a Cursor object. It will let
