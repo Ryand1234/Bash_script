@@ -9,7 +9,7 @@ h1{
 body{
 	background-color: burlywood;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 p{
 	color: red;
@@ -17,13 +17,26 @@ p{
 	font-style: bold;
 
 }
+#block{
+	display: inline-block;
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+#message
+{
+	font-size: 0.7em;
+}
+a{
+	font-size: 0.6em;
+}
 li{
 	color: orangered;
 	text-align: center;
 }
-#message{
-	font-size: 0.7em;
-}
+
 </style>
 <head>
 
@@ -35,34 +48,34 @@ li{
 	<div id = "message">
 		<ul>
 			<li>Sign up compeleted! <button id ="remove">&#x2718;</button>
-		</ul>
-		
+		</ul>	
 	</div>
-	<button id = "show_signin">Sign Up</button>
-	<button id = "show_login">Log In</button>
-	<div id = "signin">
-		<p>Sign Up</p>
-		<form  method="POST">
-			<ul>
-				<li>Name   :  <input type="text" name="name"></li>
-				<li>Mobile :  <input type="text" name="number"></li>
-				<li>Email   :  <input type="email" name="email"></li>
-				<li>Contry    :  <input type="text" name="contry">	</li>
-				<li>Password    :  <input type="text" 
-				name="password">	</li>
-			</ul>
-			<input type="submit" name="submit">
-		</form>
-	</div>
-	<div id = "login">
-		<p>Log In</p>
-		<form method="POST">
-			<ul>
-				<li>Email   :  <input type="email" name="email"></li>
-				<li>Password    :  <input type="password" name="password">	</li>
-			</ul>
-			<input type="submit" name="submit">
-		</form>
+	<div id = "block">
+		<div id = "signin">
+			<p>Sign In</p>
+			<form  method="POST">
+				<ul>
+					<li>Name   :  <input type="text" name="name"></li>
+					<li>Mobile :  <input type="text" name="	number"></li>
+					<li>Email   :  <input type="email" name="email"></li>
+					<li>Contry    :  <input type="text" name="contry">	</li>
+					<li>Password    :  <input type="text" name="password">	</li>
+					<input type="submit" name="submit"> <a href="">Forgot password?</a>
+				</ul>
+			</form>
+		</div>
+		<div id = "login">
+			<p>Log In</p>
+			<form method="POST">
+				<ul>
+					<li>Email   :  <input type="email" name="email"></li>
+					<li>Password    :  <input type="password" name="password">	</li>
+					<input type="submit" name="submit"> <a href="">Forgot password?</a>
+				</ul>
+			</form>
+		</div>
+		<button id = "show_signin">Sign In</button>
+		<button id = "show_login">Log In</button>
 	</div>
 </body>
 <script type="text/javascript">
