@@ -9,7 +9,7 @@ db = MySQLdb.connect(host="localhost",
                      passwd="riyan1234",  
                      db="data")        
 cur = db.cursor()
-query = "DELETE FROM form WHERE Name = %s and Password = %s"
+query = "DELETE FROM form WHERE Email = %s and Password = %s"
 arg = (email,password)
 cur.execute(query,arg)
 db.commit()

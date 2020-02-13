@@ -2,10 +2,10 @@ from os import fork,system
 from flask import Flask,render_template,request
 from subprocess import call,Popen
 app = Flask(__name__)
-@app.route('/')
+@app.route('/home/')
 def index():
 	return render_template("home.html")
-@app.route('/',methods=['POST','GET'])
+@app.route('/home/',methods=['POST','GET'])
 def login():
 	if request.method == 'POST':
 		if len(request.form) >3:
@@ -29,18 +29,17 @@ def login():
 			else:
 				Popen(['sudo','python3', 'log.py',email,password])
 				return render_template("loging.html")
-@app.route('/home/delete/')
+@app.route('/delete/')
 def dele():
 	return render_template('delete.html')
-@app.route('/home/delete/',methods=['POST','GET'])
+@app.route('/delete/',methods=['POST','GET'])
 def delet():
 	if request.method == 'POST':
-		name = request.form['name']
 		email = request.form['email']
 		passwd = request.form['password']
 		frk = fork()
 		if frk == 0:
-			Popen(['sudo','python3', 'delete.py',name,email,password])
+			Popen(['sudo','python3', 'delete.py',email,passwd])
 			return render_template("loadingdel.html")
 		else:
 			return render_template("delete.html")
