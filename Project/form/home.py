@@ -1,6 +1,7 @@
 from os import fork,system
+from sys import executable
 from flask import Flask,render_template,request
-from subprocess import call,Popen
+from subprocess import call,Popen,PIPE,check_output
 app = Flask(__name__)
 @app.route('/home/')
 def index():
@@ -23,12 +24,16 @@ def login():
 		else:
 			email = request.form['email']
 			password = request.form['password']
-			frk = fork()
-			if frk == 0:
-				return render_template("loging.html")
+			k = check_output(['sudo','python3','/home/riyan/github/Bash_script/Project/form/log.py',email,password])
+			k1 = k.decode('utf-8')
+			k2 = int(k1[0])
+			k3=''
+			for i in range(2,len(k1)):
+				k3 = k3+k1[i]
+			if k2 == 1:
+				return render_template('loging.html',value = k3)
 			else:
-				Popen(['sudo','python3', 'log.py',email,password])
-				return render_template("loging.html")
+				return render_template('login.html')
 @app.route('/delete/')
 def dele():
 	return render_template('delete.html')
@@ -44,4 +49,4 @@ def delet():
 		else:
 			return render_template("delete.html")
 if __name__=="__main__":
-	app.run(host="localhost")
+	app.run(host="localhost",debug=True)
