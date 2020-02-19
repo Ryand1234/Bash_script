@@ -9,19 +9,22 @@ def home():
 def detail():
 	if request.method == 'POST':
 		name = request.form['name']
-		mob = request.form['number']
+		mob = (request.form['number'])
 		email = request.form['email']
-		message = request.form['complain']
+		message = str(request.form['complain'])
 		bank = request.form['bank']
+		k = 0
 		if message == "":
 			return render_template("merror.html")
 		child = fork()
 		if child == 0:
-			k = check_output(["sudo ","python3"," strip_complain,py",complain])
+			k = check_output(["python3","strip_complain.py",message])
+			k = k.decode('utf-8')
+			k=str(k[0])
 			return render_template("complaining.html")
 		else:
 			wait()
-			Popen("sudo "," python3 "," to_database.py",name,mob,email,k,bank,complain," &")
-			return render_template("complain_filed.html")
+			check_output(["sudo","python3","to_database.py",name,mob,email,k,bank,message])
+			return render_template("complain_filed.html")	
 if __name__ == "__main__":
 	app.run(debug=True,host="localhost")
