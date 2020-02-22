@@ -9,8 +9,9 @@ then
 fi
 mkdir ./$reponame
 cd $reponame
+user=$2
 echo "Enter Readme " > README.md
 git add README.md
 git commit -m "Starting new repository"
-git remote add origin  https://github.com/$2/$1.git
+git remote add origin  https://github.com/$user/$reponame.git
 git push -u origin master
