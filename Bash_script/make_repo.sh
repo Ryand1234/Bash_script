@@ -11,6 +11,7 @@ mkdir ./$reponame
 cd $reponame
 user=$2
 echo "Enter Readme " > README.md
+git init
 git add README.md
 git commit -m "Starting new repository"
 git remote add origin  https://github.com/$user/$reponame.git
